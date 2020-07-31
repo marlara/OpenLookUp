@@ -12,3 +12,7 @@ Per le prove utilizzare https://search-2.medialibrary.it/solr/openmlol/select, d
 [pysolr](https://pypi.org/project/pysolr/2.1.0/) potrebbe essere una libreria adatta alla creazione di query tramite python.
 
 Per la parte app, utilizzo di Flask e Jinja2 (per templating). Una breve guida di inizio qui: [https://realpython.com/primer-on-jinja-templating/](https://realpython.com/primer-on-jinja-templating/)
+
+Vedi anche per Flask in generale [https://pythonhow.com/building-a-website-with-python-flask/](https://pythonhow.com/building-a-website-with-python-flask/)
+
+Form in flask: [https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/](https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/)
