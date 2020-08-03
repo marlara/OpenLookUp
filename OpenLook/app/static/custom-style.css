@@ -1,0 +1,11 @@
+.btn {
+	border-radius: 0px;
+}
+.jumbotron.jumbotron-fluid {
+    background-image: url("https://www.parismuseescollections.paris.fr/sites/default/files/styles/pm_diaporama_zoom/public/atoms/images//lpdp_145123-1.jpg?itok=qgaeE1_3");
+    min-height: 577px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
