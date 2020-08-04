@@ -1,14 +1,10 @@
 
-{% extends "base.html" %} {% block title %}Flask Solr{% endblock %} {% block body %}
+{% extends "base.html" %} {% block title %}Open Look App{% endblock %} {% block body %}
 
 <div class="container">
-    <h1>Search</h1>
-    <p>Request: {{ req }}</p>
-    <br>
-    <p>Current URL: {{ local_url_selected }}</p>
-    <br>
-    <p>Search (case sensitive), you searched for: {{ rv }} in : {{ param }}</p>
-    <form action="/search_str" method="POST">
+    <h1>Ricerca avanzata in Solr</h1>
+    <p>Scegli i parametri e lancia la ricerca</p>
+    <form action="/search" method="POST">
         <div class="form-group">
             <div class="col-xs-3">
                 <input class="form-control" id="inputdefault" type="text" name="user_input" />
@@ -16,11 +12,9 @@
                 <br>
                 <!-- post btn -->
                 <input type="submit" name="action" value="Search" class="btn btn-primary" />
-                <br>
-                <br>
             </div>
         </div>
-         <!-- option value must match schema in SolR-->
+         <!-- option value must match schema in SolR
         <label class="radio-inline">
             <input type="radio" name="options" value="id">Id
         </label>
@@ -32,7 +26,7 @@
         </label>
          <label class="radio-inline">
             <input type="radio" name="options" checked value="desc">Description
-        </label>
+        </label>-->
 
         <br>
     </form>
@@ -44,12 +38,10 @@
     <br>
 
     <div class="container">
+        <h2>Risultati per la ricerca: {{ user_input}}</h2>
+        <p> {{ data }}</p>
 
-        {% for r in data %}
-        <p> {{ r }}</p>
-        {% endfor %}
-        <br>
-
+        
     </div>
 
 </div>
@@ -59,4 +51,7 @@
 <p>selectd {{ local_url_selected }}</p>
 {{ local_urls }}
 -->
+
 {% endblock %}
+
+

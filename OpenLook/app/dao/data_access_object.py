@@ -1,20 +1,18 @@
 import requests
+import pysolr
 
 class DataAccess:
 
     def __init__(self):
         pass
 
-    def search_string(self, user_input, atr_input):
+    def search_string(self, user_input):
         """Get 10000 rows where atr like input"""
-        url = "https://search-2.medialibrary.it/solr/openmlol/select?q=" + atr_input + ":*"+ str(user_input) + "*&rows=10000"
-        r = requests.get(url)
-        # print("Solr status " + str(r.status_code))
-        js = r.json()
-        li = js["response"]["docs"]
-        return li
+        solr = pysolr.Solr('https://search-2.medialibrary.it/solr/openmlol')
+        results = solr.search(user_input)
+        return results.hits
 
-
+    """
     def get_docs_default(self, url_to_use):
         # r = requests.get("http://localhost:8983/solr/newcore/select?q=*:*")
         url_full = url_to_use + "/newcore/select?q=*:*"
@@ -38,3 +36,4 @@ class DataAccess:
         # for l in li:
         #    print(l)
         return li
+    """

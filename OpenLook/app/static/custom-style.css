@@ -1,11 +1,12 @@
 .btn {
 	border-radius: 0px;
 }
+
 .jumbotron.jumbotron-fluid {
-    background-image: url("https://www.parismuseescollections.paris.fr/sites/default/files/styles/pm_diaporama_zoom/public/atoms/images//lpdp_145123-1.jpg?itok=qgaeE1_3");
-    min-height: 577px;
+    background-image: url("https://piction.clevelandart.org/cma/ump.di?e=200F1C6F760C768BFCC88A4487E6306AD60878FB4558F9E90F3EF894ECE2E4B7&s=21&se=335697428&v=&f=2003.386_o10.jpg");
+    height: 300px;
     position: relative;
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
 }

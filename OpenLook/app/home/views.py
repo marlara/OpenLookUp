@@ -9,6 +9,6 @@ def index():
     
     return render_template("index.html")
 
-@home.route("/about")
-def about():
-    return render_template("about.html")
+#@home.route("/search")
+#def search():
+#    return render_template("search.html")

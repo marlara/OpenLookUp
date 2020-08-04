@@ -20,3 +20,21 @@ Vedi anche per Flask in generale [https://pythonhow.com/building-a-website-with-
 Form in flask: [https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/](https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/)
 
 Thanks to https://github.com/spawnmarvel/solrhttp for architecture help
+
+
+https://towardsdatascience.com/create-a-full-search-engine-via-flask-elasticsearch-javascript-d3js-and-bootstrap-275f9dc6efe1
+https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-x-full-text-search
+https://medium.com/@joseortizcosta/search-utility-with-flask-and-mysql-60bb8ee83dad
+https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
+
+Get e Post: https://www.diffen.com/difference/GET-vs-POST-HTTP-Requests
+
+
+Sass and Flask: https://sass.github.io/libsass-python/frameworks/flask.html
+
+<!-- iterate results
+        {% for r in data %}
+        <p> {{ r }}</p>
+        {% endfor %}
+        <br>
+-->
