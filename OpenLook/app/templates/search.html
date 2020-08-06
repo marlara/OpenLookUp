@@ -4,42 +4,57 @@
 <div class="container">
     <h1>Ricerca avanzata in Solr</h1>
     <p>Scegli i parametri e lancia la ricerca</p>
+    <form action="/search" method="POST"> <!-- this is important! -->
+        <div class="form-group">
+            <div class="col-xs-3">
+                <input class="form-control" id="inputdefault" type="text" name="user_input" placeholder="Search..." />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="advance-search">Raggruppa per</label>
+            <select name= "options" class="form-control" id="advance-search">
+                <option value="" selected >Scegli un'opzione...</option>
+                <!-- option value must match schema in SolR -->
+                <option value="publisher" >Publisher</option>
+            </select>
+            <br>
+            <input type="submit" name="action" value="Search" class="btn btn-primary" />
+        </div>
+    </form>
+    <!-- vecchio form search
     <form action="/search" method="POST">
         <div class="form-group">
             <div class="col-xs-3">
                 <input class="form-control" id="inputdefault" type="text" name="user_input" />
 
                 <br>
-                <!-- post btn -->
+                <~~! post btn ~~>
                 <input type="submit" name="action" value="Search" class="btn btn-primary" />
             </div>
         </div>
-         <!-- option value must match schema in SolR
+         <!~~ option value must match schema in SolR ~~>
         <label class="radio-inline">
-            <input type="radio" name="options" value="id">Id
+            <input type="radio" name="options" value="title">Title
         </label>
         <label class="radio-inline">
-            <input type="radio" name="options" value="tag">Tag
+            <input type="radio" name="options" value="creator">Author
         </label>
-        <label class="radio-inline">
-            <input type="radio" name="options" value="plant">Plant
-        </label>
-         <label class="radio-inline">
-            <input type="radio" name="options" checked value="desc">Description
-        </label>-->
-
         <br>
     </form>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br>-->
 
     <div class="container">
-        <h2>Risultati per la ricerca: {{ user_input}}</h2>
-        <p> {{ data }}</p>
+        <div>{{ data | safe }}</div>
+        <!--<h2>Risultati per la ricerca: {{ data|length }}</h2>
+        <table>
+            <thead><tr><th>Name</th><th>Count</th></tr></thead>
+            <tbody>
+            {% for r in data %}
+            <tr><td>{{ r["publisher"] }}</td><td>{{ r["publisher"]|length }}</td></tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        <br>-->
 
         
     </div>

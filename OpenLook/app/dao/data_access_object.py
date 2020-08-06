@@ -1,17 +1,27 @@
 import requests
 import pysolr
+import pandas as pd
 
 class DataAccess:
 
     def __init__(self):
+        self.solr = pysolr.Solr('https://search-2.medialibrary.it/solr/openmlol')
         pass
 
     def search_string(self, user_input):
-        """Get 10000 rows where atr like input"""
-        solr = pysolr.Solr('https://search-2.medialibrary.it/solr/openmlol')
-        results = solr.search(user_input)
-        return results.hits
+        """Get just the results, plain (how to get more?)"""
+        results = self.solr.search(user_input)
+        #docs = results.docs
+        return results
 
+    def group_by_publisher(self, user_input):
+        params = {
+        'facet': 'on',
+        'facet.field': 'publisher_db_map',
+        'facet.query': user_input,
+        }
+        results = self.solr.search('*:*', **params)
+        return results.facets
     """
     def get_docs_default(self, url_to_use):
         # r = requests.get("http://localhost:8983/solr/newcore/select?q=*:*")

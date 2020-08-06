@@ -32,9 +32,21 @@ Get e Post: https://www.diffen.com/difference/GET-vs-POST-HTTP-Requests
 
 Sass and Flask: https://sass.github.io/libsass-python/frameworks/flask.html
 
+Jinja2 template: https://jinja.palletsprojects.com/en/2.11.x/templates/
+
+python and javascript in flask: https://www.jitsejan.com/python-and-javascript-in-flask.html
+
 <!-- iterate results
         {% for r in data %}
         <p> {{ r }}</p>
         {% endfor %}
         <br>
 -->
+
+arguments lists: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists
+
+https://sarahleejane.github.io/learning/python/2015/08/09/simple-tables-in-webapps-using-flask-and-pandas-with-python.html
+
+form in bootstrap: https://getbootstrap.com/docs/4.0/components/forms/
+
+some javascript thing: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onchange
