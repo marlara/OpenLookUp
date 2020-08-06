@@ -19,9 +19,10 @@ class DataAccess:
         'facet': 'on',
         'facet.field': 'publisher_db_map',
         'facet.query': user_input,
+        'fl': 'publisher'
         }
         results = self.solr.search('*:*', **params)
-        return results.facets
+        return results.docs
     """
     def get_docs_default(self, url_to_use):
         # r = requests.get("http://localhost:8983/solr/newcore/select?q=*:*")
