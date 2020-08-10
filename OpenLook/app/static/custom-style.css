@@ -1,9 +1,52 @@
+body{
+    font-family: 'Montserrat', 'Noto Sans', 'Noto Sans JP', 'Noto Sans SC', 'Cairo', 'Noto Sans KR', sans-serif;
+}
+
+/* navbar */
+.navbar {
+    height: 7rem;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #cd2b00;
+    /*font-weight: 700;*/
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    border-bottom: 1px solid #F84718;
+    color: #F84718;
+    padding-bottom: calc(.5rem - 1px);   
+}
+
+/*@media(min-width: 576px) {
+    .navbar-expand-sm .navbar-collapse {
+        display: -ms-flexbox !important;
+        display: flex !important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+        justify-content: flex-end;
+    }
+}*/
+.navbar-brand {
+    background: rgb(22,36,56);
+    background: linear-gradient(129deg, rgba(36,49,69,1) 75%, rgba(248,249,250,0.9) 75.5%);
+    color: white !important;
+    line-height: 1.4rem;
+    padding: 2% 8rem 2% 2%;
+
+}
+/* buttons */
 .btn {
 	border-radius: 0px;
 }
 
+.btn-primary{
+    background: rgb(22,36,56);
+    border-color: rgb(22,36,56);
+}
+
+/*jumbotronn*/
 .jumbotron.jumbotron-fluid {
-    background-image: url("https://piction.clevelandart.org/cma/ump.di?e=200F1C6F760C768BFCC88A4487E6306AD60878FB4558F9E90F3EF894ECE2E4B7&s=21&se=335697428&v=&f=2003.386_o10.jpg");
+    background-image: url("/static/images/Paris-seen-from-MontmartreRiviere.jpg");
     height: 300px;
     position: relative;
     background-size: cover;
@@ -11,7 +54,33 @@
     background-repeat: no-repeat;
 }
 
+.jumbotron .container * {
+    background-color: rgba(255, 255, 255, 0.6);
+    display: inline-flex;
+    padding: 1rem;
+
+}
+
+.footer.jumbotron {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/*cards*/
+.card{
+    border-radius: 0px;
+}
+
+
+.card-img{
+    max-width: 100%;
+    height: 220px;
+    width: auto;
+}
+
+/* form */
+
 .form-group[type=text] {
     border-bottom: 1px solid #4dd0e1;
     box-shadow: 0 1px 0 0 #4dd0e1;
-  }
+}
