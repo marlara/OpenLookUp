@@ -3,24 +3,35 @@
 
 <div class="container">
     <h1>Ricerca avanzata in Solr</h1>
+    <br>
     <p>Scegli i parametri e lancia la ricerca</p>
     <form action="/search" method="POST"> <!-- this is important! -->
         <div class="form-group">
-            <div class="col-xs-3">
-                <input class="form-control" id="inputdefault" type="text" name="user_input" placeholder="Search..." />
-            </div>
+            <input class="form-control" id="inputdefault" type="text" name="user_input" placeholder="Search..." />
         </div>
         <div class="form-group">
-            <label for="advance-search">Raggruppa per</label>
-            <select name= "options" class="form-control" id="advance-search">
-                <option value="" selected >Scegli un'opzione...</option>
-                <!-- option value must match schema in SolR -->
-                <option value="publisher" >Publisher</option>
-            </select>
-            <br>
-            <input type="submit" name="action" value="Search" class="btn btn-primary" />
-        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="group-by">Raggruppa per</label>
+                    <select name= "options" class="custom-select" id="group-by">
+                        <option value="" selected >Scegli un'opzione...</option>
+                        <!-- option value must match schema in SolR -->
+                        <option value="publisher" >Publisher</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="select-col">Seleziona colonne</label>
+                    <select name= "options" class="custom-select" id="select-col">
+                        <option value="" selected >Scegli un'opzione...</option>
+                        <!-- option value must match schema in SolR -->
+                        <option value="publisher" >Publisher</option>
+                    </select>
+                </div>
+            </div>
+            </div>
+        <input type="submit" name="action" value="Search" class="btn btn-primary" />
     </form>
+</div>
     <!-- vecchio form search
     <form action="/search" method="POST">
         <div class="form-group">
@@ -43,8 +54,8 @@
     </form>
     <br>-->
 
-    <div class="container">
-        <div>{{ data | safe }}</div>
+<div class="container">
+    <div>{{ data | safe }}</div>
         <!--<h2>Risultati per la ricerca: {{ data|length }}</h2>
         <table>
             <thead><tr><th>Name</th><th>Count</th></tr></thead>
@@ -54,18 +65,9 @@
             {% endfor %}
             </tbody>
             </table>
-        <br>-->
-
-        
-    </div>
-
+        <br>-->   
 </div>
 
-
-<!-- debug
-<p>selectd {{ local_url_selected }}</p>
-{{ local_urls }}
--->
 
 {% endblock %}
 
