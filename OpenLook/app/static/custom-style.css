@@ -109,3 +109,10 @@ body{
 .custom-select {
     border-radius: 0px;
 }
+
+.alert-info {
+    border-radius: 0px;
+    background: #FF724D;
+    border-color: #FF724D;
+    color: white;
+}

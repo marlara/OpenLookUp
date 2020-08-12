@@ -50,3 +50,5 @@ https://sarahleejane.github.io/learning/python/2015/08/09/simple-tables-in-webap
 form in bootstrap: https://getbootstrap.com/docs/4.0/components/forms/
 
 some javascript thing: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_onchange
+
+https://medium.com/@avremelk/solr-gottchas-a-tutorial-a953c8b3e775

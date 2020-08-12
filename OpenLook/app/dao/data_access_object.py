@@ -9,42 +9,17 @@ class DataAccess:
         pass
 
     def search_string(self, user_input):
-        """Get just the results, plain (how to get more?)"""
-        results = self.solr.search(user_input)
+        """Gets just 10000 results"""
+        results = self.solr.search(user_input, rows=100)
         #docs = results.docs
         return results
 
-    def group_by_publisher(self, user_input):
-        params = {
-        'facet': 'on',
-        'facet.field': 'publisher_db_map',
-        'facet.query': user_input,
-        'fl': 'publisher'
-        }
-        results = self.solr.search('*:*', **params)
-        return results.docs
-    """
-    def get_docs_default(self, url_to_use):
-        # r = requests.get("http://localhost:8983/solr/newcore/select?q=*:*")
-        url_full = url_to_use + "/newcore/select?q=*:*"
-        r = requests.get(url_full)
-        print("Solr status " + str(r.status_code))
-        js = r.json()
-        # print("Docs")
-        li = js["response"]["docs"]
-        # for l in li:
-        #    print(l)
-        return li
-
-    def get_docs_max(self, url_to_use, default=10000):
-        # r = requests.get("http://localhost:8983/solr/newcore/select?q=*:*&rows=" + str(default))
-        url_full = url_to_use + "/newcore/select?q=*:*&rows=" + str(default)
-        r = requests.get(url_full)
-        print("Solr status " + str(r.status_code))
-        js = r.json()
-        # print("Docs")
-        li = js["response"]["docs"]
-        # for l in li:
-        #    print(l)
-        return li
-    """
+    def group_by(self, user_input, param_group):
+        results = self.solr.search(user_input, rows=100)
+        docs = results.docs
+        df = pd.DataFrame(docs)
+        string_param = param_group.replace("_db_map", "") #to get the litteral value
+        new_df = df[[param_group, string_param, "id"]] #create new dataframe with just the desired values
+        exploded = new_df.set_index(['id']).apply(pd.Series.explode).reset_index() #EXPLODE the listed values!! see https://stackoverflow.com/a/59330040/5102877
+        group = exploded.dropna().groupby([param_group, string_param])["id"].count() #see https://realpython.com/pandas-groupby/
+        return group.reset_index() #see https://stackoverflow.com/questions/51171737/passing-pandas-groupby-result-to-html-in-a-pretty-way
