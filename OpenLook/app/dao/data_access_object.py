@@ -15,7 +15,7 @@ class DataAccess:
         return results
 
     def group_by(self, user_input, param_group):
-        results = self.solr.search(user_input, rows=100)
+        results = self.solr.search(user_input, rows=10000)
         docs = results.docs
         df = pd.DataFrame(docs)
         if "publisher" in param_group or "creator" in param_group:
@@ -24,5 +24,5 @@ class DataAccess:
             string_param = param_group.replace("_db_map", "_ss")
         new_df = df[[param_group, string_param, "id"]] #create new dataframe with just the desired values
         exploded = new_df.set_index(['id']).apply(pd.Series.explode).reset_index() #EXPLODE the listed values!! see https://stackoverflow.com/a/59330040/5102877
-        group = exploded.dropna().groupby([param_group, string_param])["id"].count() #see https://realpython.com/pandas-groupby/
-        return group.reset_index() #see https://stackoverflow.com/questions/51171737/passing-pandas-groupby-result-to-html-in-a-pretty-way
+        make_group = exploded.groupby([param_group, string_param])["id"].count() #see https://realpython.com/pandas-groupby/
+        return make_group.reset_index() #see https://stackoverflow.com/questions/51171737/passing-pandas-groupby-result-to-html-in-a-pretty-way
