@@ -9,16 +9,26 @@ class DataAccess:
         pass
 
     def search_string(self, user_input):
-        """Gets just 10000 results"""
+        """Gets just 100 results"""
         results = self.solr.search(user_input, rows=100)
-        #docs = results.docs
-        return results
+        docs = results.docs
+        df = pd.DataFrame(docs)
+        df = df[['id','title', 'publisher', 'typology', 'creator_sort', 'viaf', 'viafname', 'wikidata', 'collection_ss', 'language_ss', 'license_ss', 'subject_ss', 'tag_ss', 'description', 'coverage_ss', 'schoolgrade_ss']]
+        return df
+
+    def select(self, user_input, selection):
+        """Gets just 100 results"""
+        results = self.solr.search(user_input, rows=100)
+        docs = results.docs
+        df = pd.DataFrame(docs)
+        df = df[['id'] + selection]
+        return df
 
     def group_by(self, user_input, param_group):
         results = self.solr.search(user_input, rows=10000)
         docs = results.docs
         df = pd.DataFrame(docs)
-        if "publisher" in param_group or "creator" in param_group:
+        if "publisher" in param_group or "creator" in param_group or "typology" in param_group:
             string_param = param_group.replace("_db_map", "") #to get the litteral value
         else:
             string_param = param_group.replace("_db_map", "_ss")

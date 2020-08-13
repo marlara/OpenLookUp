@@ -1,6 +1,8 @@
 
 {% extends "base.html" %} {% block title %}Open Look App{% endblock %} {% block body %}
 
+
+
 <!--search-->
 <div class="container">
     <h1>Ricerca avanzata in Solr</h1>
@@ -8,6 +10,19 @@
     <p>Scegli i parametri e lancia la ricerca</p>
     <form action="/search" method="POST"> <!-- this is important! -->
         <div class="form-group">
+            <!-- 
+            <div class="row">
+                <select name="filter_f" class="selectpicker">
+                    <option value="" selected >Filtra</option>
+                    <option value="creator_str">Autore</option>
+                    <option value="collection_ss">Collezione</option>
+                    <option value="id">Id</option>
+                    <option value="license_ss">Licenza</option>
+                    <option value="publisher">Publisher</option>
+                    <option value="title">Titolo</option>
+                    <option value="viaf">Viaf</option>
+                    <option value="wikidata">Wikidata</option>
+                </select> -->
             <input class="form-control" id="inputdefault" type="text" name="user_input" placeholder="Search..." value="{{ request.form['user_input'] }}"/>
         </div>
         <div class="form-group">
@@ -22,15 +37,28 @@
                         <option value="license_db_map" >Licenza</option>
                         <option value="language_db_map" >Lingua</option>
                         <option value="publisher_db_map" >Publisher</option>
-                        <option value="typology" >Tipologia</option>
+                        <option value="typology_db_map" >Tipologia</option>
                     </select>
                 </div>
                 <div class="col-md-6">
                     <label for="select-col">Seleziona colonne <em>(opzionale)</em></label>
-                    <select name= "select" class="custom-select" id="select-col">
+                    <select name= "selection" class="custom-select" id="select-col" multiple>
                         <option value="" selected >Scegli un'opzione...</option>
-                        <!-- option value must match schema in SolR -->
-                        <option value="" >Da fare</option>
+                        <option value="title" >Title</option>
+                        <option value="publisher" >Publisher</option>
+                        <option value="typology" >Typology</option>
+                        <option value="creator_sort" >Creator</option>
+                        <option value="viaf" >Viaf</option>
+                        <option value="viafname" >Viafname</option>
+                        <option value="wikidata" >Wikidata</option>
+                        <option value="collection_ss" >Collection</option>
+                        <option value="language_ss" >Language</option>
+                        <option value="license_ss" >License</option>
+                        <option value="subject_ss" >Subject</option>
+                        <option value="tag_ss" >Tag</option>
+                        <option value="description" >Description</option>
+                        <option value="coverage_ss" >Coverage</option>
+                        <option value="schoolgrade_ss"" >Schoolgrade</option>
                     </select>
                 </div>
             </div>
@@ -43,7 +71,7 @@
 <div class="container">
     {% if rv %}
     <div class="alert alert-info" role="alert">
-        Hai cercato: {{ user_input }}
+        Hai cercato: {{ rv }}
     </div>
     {% endif %}
     <div>{{ data | safe }}</div>
@@ -58,6 +86,7 @@
             </table>
         <br>-->   
 </div>
+
 
     <!-- vecchio form search
     <form action="/search" method="POST">
@@ -80,5 +109,4 @@
         <br>
     </form>
     <br>-->
-
 {% endblock %}
