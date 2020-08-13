@@ -16,6 +16,7 @@ body{
     color: #F84718;
     padding-bottom: calc(.5rem - 1px);   
 }
+  
 
 /*@media(min-width: 576px) {
     .navbar-expand-sm .navbar-collapse {
@@ -78,7 +79,7 @@ body{
 
 }
 
-.footer.jumbotron {
+.footer {
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -116,8 +117,8 @@ body{
 /* form */
 
 .form-control:focus {
-    border-bottom: 1px solid #80bdff;
-    box-shadow: 0 1px 0 0 #80bdff;
+    border-color: #F84718;
+    box-shadow: 0 0 .1rem 0 #FF8E70;
 }
 
 .form-control {
@@ -128,9 +129,25 @@ body{
     border-radius: 0px;
 }
 
+.custom-select:focus {
+    border-color: #F84718;
+    box-shadow: 0 0 .1rem 0 #FF8E70;
+}
+
 .alert-info {
     border-radius: 0px;
     background: #FF724D;
     border-color: #FF724D;
     color: white;
+}
+
+.bootstrap-selectpicker {
+    border-radius: 0px;
+    background-color: white;
+    border-color: ;
+}
+
+.bootstrap-selectpicker:focus {
+    border-color: #F84718;
+    box-shadow: 0 0 .1rem 0 #FF8E70;
 }

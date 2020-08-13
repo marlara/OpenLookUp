@@ -25,16 +25,16 @@ def search_str():
                 data = "Nessun parametro per la ricerca"
             else:
                 if param_group == "": #if group by is not selected
-                    if selection == "":
+                    if selection: #if there are selected columns
                         try:
-                            solr_data = data_access_object.DataAccess().search_string(rv) 
+                            solr_data = data_access_object.DataAccess().select(rv, selection) 
                             df = pd.DataFrame(solr_data) #create a dataframe with the result data
                             data = df.to_html(classes=['table', 'linestab', 'table-striped','table-responsive'], justify='left', border=0, index=False) #rendering for the template
                         except Exception as e:
                             data = ["error", str(e)]
                     else:
                         try:
-                            solr_data = data_access_object.DataAccess().select(rv, selection) 
+                            solr_data = data_access_object.DataAccess().search_string(rv)  
                             df = pd.DataFrame(solr_data) #create a dataframe with the result data
                             data = df.to_html(classes=['table', 'linestab', 'table-striped','table-responsive'], justify='left', border=0, index=False) #rendering for the template
                         except Exception as e:
