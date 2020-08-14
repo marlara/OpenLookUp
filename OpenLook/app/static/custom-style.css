@@ -23,7 +23,7 @@ body{
     position: relative;
 }
 
-.navbar-light .navbar-nav .nav-item:after {
+.navbar-light .navbar-nav .nav-item .nav-link:after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -33,7 +33,7 @@ body{
     transition:  all 0.5s ease-in-out 0s;
 }
 
-.navbar-light .navbar-nav .nav-item:hover:after {
+.navbar-light .navbar-nav .nav-item .nav-link:hover:after {
     width: 100%;
 }
 
@@ -157,8 +157,8 @@ body{
 
 .alert-info {
     border-radius: 0px;
-    background: #FF724D;
-    border-color: #FF724D;
+    background: #546279;
+    border-color: #546279;
     color: white;
 }
 
@@ -174,5 +174,5 @@ body{
 }
 
 .dropdown-item.active, .dropdown-item:active {
-    background-color: #FF724D;
+    background-color: #FF8E70;
 }
