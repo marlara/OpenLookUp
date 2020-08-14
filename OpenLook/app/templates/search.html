@@ -67,9 +67,17 @@
 <br>
 <!--table-->
 <div class="container">
-    {% if rv %}
+    {% if rv and selection %}
     <div class="alert alert-info" role="alert">
-        Hai cercato: {{ rv }}
+        Hai cercato: {{ rv }}. Colonne selezionate: {{ selection }}. Risultati: {{ data_count }}
+    </div>
+    {% elif rv and param_group %}
+    <div class="alert alert-info" role="alert">
+        Hai cercato: {{ rv }}. Raggruppato per: {{ param_group }}. Risultati: {{ data_count }}
+    </div>
+    {% elif rv %}
+    <div class="alert alert-info" role="alert">
+        Hai cercato: {{ rv }}. Risultati: {{ data_count }}
     </div>
     {% endif %}
     <div>{{ data | safe }}</div>
@@ -82,7 +90,7 @@
             {% endfor %}
             </tbody>
             </table>
-        <br>-->   
+        <br>--> 
 </div>
 
 <script>

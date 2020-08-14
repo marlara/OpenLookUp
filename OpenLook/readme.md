@@ -54,3 +54,5 @@ some javascript thing: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsr
 https://medium.com/@avremelk/solr-gottchas-a-tutorial-a953c8b3e775
 
 multiple select? https://www.soengsouy.com/2020/03/bootstrap-4-multiselect-dropdown.html?m=1
+
+Used flask-pagination: https://flask-paginate.readthedocs.io/en/master/

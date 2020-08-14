@@ -22,6 +22,7 @@ class DataAccess:
         docs = results.docs
         df = pd.DataFrame(docs)
         df = df[['id'] + selection]
+        df['scheda'] = "https://medialibrary.it/media/schedaopen.aspx?id="+df['id']
         return df
 
     def group_by(self, user_input, param_group):
@@ -35,4 +36,5 @@ class DataAccess:
         new_df = df[[param_group, string_param, "id"]] #create new dataframe with just the desired values
         exploded = new_df.set_index(['id']).apply(pd.Series.explode).reset_index() #EXPLODE the listed values!! see https://stackoverflow.com/a/59330040/5102877
         make_group = exploded.groupby([param_group, string_param])["id"].count() #see https://realpython.com/pandas-groupby/
+        make_group.rename(columns={'id':'Numero di risorse'}, inplace=True) #rename the column for better understanding
         return make_group.reset_index() #see https://stackoverflow.com/questions/51171737/passing-pandas-groupby-result-to-html-in-a-pretty-way
