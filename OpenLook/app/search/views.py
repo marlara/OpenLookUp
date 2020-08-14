@@ -24,7 +24,14 @@ def search_str():
             if len(rv) < 2:
                 data = "Nessun parametro per la ricerca"
             else:
-                if param_group == "": #if group by is not selected
+                if param_group: #if group by is selected
+                    try:
+                        solr_data = data_access_object.DataAccess().group_by(rv, param_group)
+                        df = pd.DataFrame(solr_data)
+                        data = df.to_html(classes=['table', 'linestab', 'table-striped','table-responsive'], justify='left', border=0, index=False) #rendering for the template
+                    except Exception as e:
+                        data = ["error", str(e)]
+                else:
                     if selection: #if there are selected columns
                         try:
                             solr_data = data_access_object.DataAccess().select(rv, selection) 
@@ -32,19 +39,12 @@ def search_str():
                             data = df.to_html(classes=['table', 'linestab', 'table-striped','table-responsive'], justify='left', border=0, index=False) #rendering for the template
                         except Exception as e:
                             data = ["error", str(e)]
-                    else:
+                    else: #simple search
                         try:
                             solr_data = data_access_object.DataAccess().search_string(rv)  
                             df = pd.DataFrame(solr_data) #create a dataframe with the result data
                             data = df.to_html(classes=['table', 'linestab', 'table-striped','table-responsive'], justify='left', border=0, index=False) #rendering for the template
                         except Exception as e:
-                            data = ["error", str(e)]
-                else: #if param is selected
-                    try:
-                        solr_data = data_access_object.DataAccess().group_by(rv, param_group)
-                        df = pd.DataFrame(solr_data)
-                        data = df.to_html(classes=['table', 'linestab', 'table-striped','table-responsive'], justify='left', border=0, index=False) #rendering for the template
-                    except Exception as e:
-                        data = ["error", str(e)]
+                            data = ["error", str(e)]                    
     #GET
     return render_template("search.html", rv=rv,req=req, data=data)#, param_group=param_group)

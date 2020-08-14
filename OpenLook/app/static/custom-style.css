@@ -162,12 +162,17 @@ body{
     color: white;
 }
 
-.bootstrap-selectpicker {
-    border-radius: 0px;
-    background-color: white;
+/* bootstrap-select to make it like the "normal" search and select */
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
+    width:100%;
 }
 
-.bootstrap-selectpicker:focus {
-    border-color: #F84718;
-    box-shadow: 0 0 .1rem 0 #FF8E70;
+.btn.dropdown-toggle.btn-light.bs-placeholder { 
+    background-color: white;
+    border: 1px solid #ced4da;
+    color: #6c757d;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #FF724D;
 }
