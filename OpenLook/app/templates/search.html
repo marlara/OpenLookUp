@@ -1,17 +1,16 @@
 
 {% extends "base.html" %} {% block title %}Open Look App{% endblock %} {% block body %}
 
-
-
 <!--search-->
+
 <div class="container">
     <h1>Ricerca avanzata in Solr</h1>
     <br>
     <p>Scegli i parametri e lancia la ricerca</p>
     <form action="/search" method="POST"> <!-- this is important! -->
         <div class="form-group">
-            <!-- 
             <div class="row">
+                <div class="col-md-2">
                 <select name="filter_f" class="selectpicker">
                     <option value="" selected >Filtra</option>
                     <option value="creator_str">Autore</option>
@@ -22,8 +21,12 @@
                     <option value="title">Titolo</option>
                     <option value="viaf">Viaf</option>
                     <option value="wikidata">Wikidata</option>
-                </select> -->
-            <input class="form-control" id="inputdefault" type="text" name="user_input" placeholder="Search..." value="{{ request.form['user_input'] }}"/>
+                </select>
+                </div>
+                <div class="col-md-10">
+                <input class="form-control" id="inputdefault" type="text" name="user_input" placeholder="Search..." value="{{ request.form['user_input'] }}"/>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <div class="row">

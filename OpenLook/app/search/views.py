@@ -12,6 +12,7 @@ def search_str():
     param_group = ""
     selection = ""
     data = ""
+    filter_f = ""
     index = "" #trova un modo per evitare che bisogni sempre nominare prima le variabili
     req = "GET"
     if request.method == "POST":
@@ -21,6 +22,7 @@ def search_str():
             user_input = request.form["user_input"]
             rv = user_input
             selection = request.form.getlist("selection") #multiple choice
+            filter_f = request.form["filter_f"]
             param_group = request.form["grouping"] #this is in reference to <select name= "grouping"> in search.html
             if len(rv) < 2:
                 data = "Nessun parametro per la ricerca!"
@@ -44,7 +46,7 @@ def search_str():
                             data = ["error", str(e)]
                     else: #simple search
                         try:
-                            solr_data = data_access_object.DataAccess().search_string(rv)  
+                            solr_data = data_access_object.DataAccess().search_string(rv, filter_f)  
                             df = pd.DataFrame(solr_data) #create a dataframe with the result data
                             index = df.index
                             data = df.to_html(classes=['table', 'linestab', 'table-striped','table-responsive'], justify='left', border=0, index=False) #rendering for the template
