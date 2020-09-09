@@ -21,17 +21,27 @@ class DataAccess:
         df = df[['id','title', 'publisher', 'typology', 'creator_sort', 'viaf', 'viafname', 'wikidata', 'collection_ss', 'language_ss', 'license_ss', 'subject_ss', 'tag_ss', 'description', 'schoolgrade_ss']]
         return df
 
-    def select(self, user_input, selection):
+    def select(self, user_input, selection, filter_f):
         """Gets just 100 results"""
-        results = self.solr.search(user_input, rows=100)
+        if filter_f == "": #if no field filtered
+            results = self.solr.search(user_input, rows=100)
+        else:
+            field = filter_f
+            query = f"{field}:{user_input}"
+            results = self.solr.search(query, rows = 100)
         docs = results.docs
         df = pd.DataFrame(docs)
         df = df[['id'] + selection]
         df['scheda'] = "https://medialibrary.it/media/schedaopen.aspx?id="+df['id']
         return df
 
-    def group_by(self, user_input, param_group):
-        results = self.solr.search(user_input, rows=10000)
+    def group_by(self, user_input, param_group, filter_f):
+        if filter_f == "": #if no field filtered
+            results = self.solr.search(user_input, rows=10000)
+        else:
+            field = filter_f
+            query = f"{field}:{user_input}"
+            results = self.solr.search(query, rows=10000)
         docs = results.docs
         df = pd.DataFrame(docs)
         if "publisher" in param_group or "creator" in param_group or "typology" in param_group:

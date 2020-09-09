@@ -29,7 +29,7 @@ def search_str():
             else:
                 if param_group: #if group by is selected
                     try:
-                        solr_data = data_access_object.DataAccess().group_by(rv, param_group)
+                        solr_data = data_access_object.DataAccess().group_by(rv, param_group, filter_f)
                         df = pd.DataFrame(solr_data)
                         index = df.index
                         data = df.to_html(classes=['table', 'linestab', 'table-striped','table-responsive'], justify='left', border=0, index=False) #rendering for the template
@@ -38,7 +38,7 @@ def search_str():
                 else:
                     if selection: #if there are selected columns
                         try:
-                            solr_data = data_access_object.DataAccess().select(rv, selection) 
+                            solr_data = data_access_object.DataAccess().select(rv, selection, filter_f) 
                             df = pd.DataFrame(solr_data) #create a dataframe with the result data
                             index = df.index
                             data = df.to_html(classes=['table', 'linestab', 'table-striped','table-responsive'], justify='left', border=0, index=False) #rendering for the template
